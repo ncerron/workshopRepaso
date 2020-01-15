@@ -35,7 +35,7 @@ export const AddButton = styled.button({
   height: "50px",
   backgroundColor: "white",
   borderColor: "#57369469",
-  margin: "20px",
+  margin: "20px 100px",
   fontSize: "18px",
   color: "#757272c2",
   borderRadius: "0.5em",

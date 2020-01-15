@@ -6,7 +6,6 @@ import {
   DescriptionContainer,
   ColumnContainer,
   Text,
-  Input
 } from "./style";
 
 export default function Card(props) {
@@ -14,7 +13,7 @@ export default function Card(props) {
     <Container>
       <ColumnContainer>
         <Title>{props.name}</Title>
-        <Image src={props.image} />
+        <Image src={`/images/properties/${props.image}`}/>
       </ColumnContainer>
 
       <ColumnContainer marginTop={"50px"}>
@@ -22,15 +21,12 @@ export default function Card(props) {
           <Text color={"black"}>Lugar: </Text>
           <Text>{props.location}</Text>
         </DescriptionContainer>
-
         <DescriptionContainer>
          <Text color={"black"}>Precio: </Text>
          <Text>{props.price}</Text>
         </DescriptionContainer>
         <DescriptionContainer>
-        
         </DescriptionContainer>
-        
       </ColumnContainer>
     </Container>
   );

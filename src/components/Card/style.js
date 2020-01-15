@@ -1,7 +1,10 @@
 import styled from "@emotion/styled";
 
+export const Background = styled.div({
+  display: "flex"
+});
+
 export const ModalContainer = styled.div({
-  display: "flex",
   position: "fixed",
   zIndex: "10",
   height: "400px",
@@ -9,6 +12,7 @@ export const ModalContainer = styled.div({
   borderStyle: "solid",
   borderWidth: "2px",
   borderColor: "#a8a8a866",
+  margin: "30px",
   boxShadow:
     "0 11px 15px -7px rgba(0, 0, 0, 0.2), 0 9px 15px 8px rgba(0, 0, 0, 0.12), 0 12px 15px 3px rgba(0, 0, 0, 0.14)",
   backgroundColor: "white"
@@ -35,7 +39,9 @@ export const Title = styled.h3({
 
 export const Image = styled.img(
   {
-    margin: "auto"
+    margin: "auto",
+    width: "360px",
+    height: "266px"
   },
   props => ({
     width: props.width,
@@ -47,7 +53,9 @@ export const Image = styled.img(
 export const ColumnContainer = styled.div(
   {
     flex: "50%",
-    padding: "20px"
+    padding: "20px",
+    display: "flex",
+    flexDirection: "column"
   },
   props => ({
     marginTop: props.marginTop
@@ -90,11 +98,14 @@ export const Input = styled.input(
     letterSpacing: "0.25px"
   },
   props => ({
-    marginLeft: props.marginLeft
+    marginLeft: props.marginLeft,
+    marginTop: props.marginTop,
+    width: props.width
   })
 );
 
 export const CloseModal = styled.button({
+  margin: "0px",
   width: "50px",
   height: "50px",
   fontSize: "20px",
@@ -103,14 +114,23 @@ export const CloseModal = styled.button({
   border: "none"
 });
 
-export const Save = styled.button({
-  width: "100px",
-  height: "50px",
+export const Button = styled.button({
+  width: "90px",
+  height: "45px",
   backgroundColor: "white",
   borderColor: "#57369469",
-  margin: "20px",
   fontSize: "18px",
   color: "#757272c2",
   borderRadius: "0.5em",
-  borderWidth: "3px"
+  borderWidth: "3px",
+  margin: "5px"
 });
+
+export const Label = styled.label(
+  {
+    margin: "auto"
+  },
+  props => ({
+    marginTop: props.marginTop
+  })
+);

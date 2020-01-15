@@ -37,8 +37,8 @@ export const Select = styled.select({
   height: "40px",
   fontSize: "18px",
   color: "#f5f5f5",
-  width: "150px",
-  backgroundColor: "#eae9e93b",
+  width: "130px",
+  backgroundColor: "#eae9e93b"
 });
 
 export const SearchBtn = styled.button({
