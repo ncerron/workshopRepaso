@@ -3,12 +3,11 @@ import Card from "../components/Card/Card";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-function Order(props) {
-  
+function Search({ search}) {
   return (
     <div>
-      { props.properties.length > 0
-        ? props.properties.map(item => (
+      {search.length > 0
+        ? search.map(item => (
             <Link  key={item.id}
               to={{
                 pathname: `/edit/${item.id}`,
@@ -21,7 +20,6 @@ function Order(props) {
               }}
             >
               <Card
-                
                 name={item.name}
                 price={item.price}
                 location={item.location}
@@ -29,12 +27,12 @@ function Order(props) {
               ></Card>
             </Link>
           ))
-        : "No se encontraron Propiedades"}
+        : `No se encontraron Propiedades en ${history.state.state.barrio}`}
     </div>
   );
 }
 const mapStateToProps = state => ({
-  properties: state.properties
+  search: state.search
 });
 
-export default connect(mapStateToProps, null)(Order);
+export default connect(mapStateToProps, null)(Search);

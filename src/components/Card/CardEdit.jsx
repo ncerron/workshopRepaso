@@ -13,14 +13,13 @@ import {
   Background
 } from "./style";
 
-export default function CardEdit(props){
-  return props.property? (
+export default function CardEdit(props) {
+  return props.property ? (
     <ModalContainer>
       <DescriptionContainer justifyContent="flex-end">
         <CloseModal onClick={props.handleHideModal}>X</CloseModal>
       </DescriptionContainer>
-
-      <form /* onSubmit={handleSubmit} */>
+      <form>
         <Background>
           <ColumnContainer>
             <Input
@@ -29,7 +28,6 @@ export default function CardEdit(props){
               onChange={props.handleInputName}
               defaultValue={props.property.name}
             ></Input>
-
             {props.selectedFile === "" ? (
               <Image
                 onChange={props.handleSelectFile}
@@ -57,7 +55,6 @@ export default function CardEdit(props){
               ></Input>
             </Label>
           </ColumnContainer>
-
           <ColumnContainer>
             <DescriptionContainer marginTop={"70px"}>
               <Text color={"black"}>Lugar: </Text>
@@ -68,16 +65,15 @@ export default function CardEdit(props){
                 onChange={props.handleInputLocation}
               ></Input>
             </DescriptionContainer>
-
             <DescriptionContainer>
               <Text color={"black"}>Precio: </Text>
               <Input
+              type="number"
                 name="price"
                 onChange={props.handleInputPrice}
                 defaultValue={props.property.price}
               ></Input>
             </DescriptionContainer>
-
             <DescriptionContainer
               marginTop={"140px"}
               justifyContent={"flex-end"}
@@ -85,20 +81,12 @@ export default function CardEdit(props){
               <Link to={"/add"}>
                 <Button>Agregar</Button>
               </Link>
-              
-                <Button onClick={props.handleDelete}>Eliminar</Button>
-              
-              
-                <Button onClick={props.handleUpdate}>Guardar</Button>
-             
+              <Button onClick={props.handleDelete}>Eliminar</Button>
+              <Button onClick={props.handleUpdate}>Guardar</Button>
             </DescriptionContainer>
           </ColumnContainer>
         </Background>
       </form>
-
-
-
-      
     </ModalContainer>
   ) : (
     "Problemas al mostrar la Propiedad"

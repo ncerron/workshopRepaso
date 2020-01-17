@@ -5,20 +5,16 @@ class Propiedad extends Sequelize.Model {}
 Propiedad.init(
   {
     name: {
-      type: Sequelize.STRING,
-      allowNull: false
+      type: Sequelize.STRING
     },
     price: {
-      type: Sequelize.INTEGER,
-      allowNull: false
+      type: Sequelize.INTEGER
     },
     location: {
-      type: Sequelize.STRING,
-      allowNull: false
+      type: Sequelize.STRING
     },
     img: {
-      type: Sequelize.STRING,
-      allowNull: false
+      type: Sequelize.STRING
     }
   },
   { sequelize: db, modelName: "propiedad" }

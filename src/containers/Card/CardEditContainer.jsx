@@ -1,18 +1,20 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import CardEdit from "../../components/Card/CardEdit";
-import { fetchProperties, fetchDelete, fetchUpdate } from "../../redux/actions";
+import { fetchDelete, fetchUpdate } from "../../redux/actions";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 class CardEditContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       selectedFile: "",
+      selectImage:"",
       img: this.props.location.state.img,
       name: this.props.location.state.name,
       location: this.props.location.state.location,
-      price:this.props.location.state.price,
+      price: this.props.location.state.price
     };
 
     this.handleHideModal = this.handleHideModal.bind(this);
@@ -21,14 +23,14 @@ class CardEditContainer extends Component {
     this.handleInputName = this.handleInputName.bind(this);
     this.handleInputPrice = this.handleInputPrice.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
-    this.handleUpdate=this.handleUpdate.bind(this);
+    this.handleUpdate = this.handleUpdate.bind(this);
   }
-  
+
   handleInputName(event) {
-    this.setState({ name: event.target.value });
+    this.setState({ name: event.target.value.toLowerCase() });
   }
   handleInputLocation(event) {
-    this.setState({ location: event.target.value });
+    this.setState({ location: event.target.value.toLowerCase() });
   }
   handleInputPrice(event) {
     this.setState({ price: event.target.value });
@@ -38,22 +40,33 @@ class CardEditContainer extends Component {
   }
   handleSelectFile(event) {
     this.setState({
-      select: event.target.files[0],
       selectedFile: URL.createObjectURL(event.target.files[0]),
-      img: event.target.files[0].name
+      img: event.target.files[0].name,
+      selectImage: event.target.files[0]
     });
   }
 
   handleDelete() {
     event.preventDefault();
     this.props.DeleteProperty(this.props.match.params.id);
-    this.props.history.push('/')
+    Swal.fire({
+      title: "",
+      text: "Se elimino la propiedad",
+      icon: "success",
+      confirmButtonColor: "#856bb7",
+      confirmButtonText: "Ok"
+    }).then(result => {
+      if (result.value) {
+        this.props.history.push("/");
+      }
+    });
   }
 
   handleUpdate() {
     event.preventDefault();
-  const formData = new FormData();
-    formData.append("img", this.state.select);
+
+    const formData = new FormData();
+    formData.append("img", this.state.selectImage)
     const config = {
       headers: {
         "content-type": "multipart/form-data"
@@ -61,19 +74,26 @@ class CardEditContainer extends Component {
     };
     axios
       .post("/api/upload", formData, config)
-      .then(response => {
-        alert("The file is successfully uploaded");
-      })
-      .catch(error => {}); 
-      this.props.UpdateProperty(this.props.match.params.id, this.state);
-      this.props.showProperties();
-      this.props.history.push('/')
+      .catch(error => {console.log("error al cargar la imagen")});
+
+    this.props.UpdateProperty(this.props.match.params.id, this.state);
+    Swal.fire({
+      title: "",
+      text: "Se acutalizo la propiedad",
+      icon: "success",
+      confirmButtonColor: "#856bb7",
+      confirmButtonText: "Ok"
+    }).then(result => {
+      if (result.value) {
+        this.props.history.push("/");
+      }
+    });
   }
 
   render() {
     return (
       <CardEdit
-        property = {this.state}
+        property={this.state}
         handleHideModal={this.handleHideModal}
         handleSelectFile={this.handleSelectFile}
         handleSubmit={this.handleSubmit}
@@ -87,11 +107,6 @@ class CardEditContainer extends Component {
     );
   }
 }
-const mapStateToProps = state => {
-  return {
-    properties: state.properties
-  };
-}; 
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -100,11 +115,8 @@ const mapDispatchToProps = dispatch => {
     },
     UpdateProperty: (input, p) => {
       dispatch(fetchUpdate(input, p));
-    },
-    showProperties: () => {
-      dispatch(fetchProperties());
     }
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CardEditContainer);
+export default connect(null, mapDispatchToProps)(CardEditContainer);

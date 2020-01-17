@@ -10,7 +10,6 @@ const storage = multer.diskStorage({
     callback(null, "./public/images/properties");
   },
   filename: function(req, file, callback) {
-    console.log(req.file);
     callback(null, `${file.originalname}`);
   }
 });
@@ -22,10 +21,8 @@ const upload = multer({
 
 Router.post("/upload", function(req, res) {
   upload(req, res, function(err) {
-    console.log("Request ---", req.body);
-    console.log("Request file ---", req.file); //Here you get file.
     if (!err) {
-      return res.send(200).end();
+      return res.sendStatus(200).end();
     }
   });
 });
@@ -33,9 +30,6 @@ Router.post("/upload", function(req, res) {
 Router.post("/create", (req, res, next) => {
   Propiedad.create(req.body)
     .then(nuevaPropiedad => res.send(nuevaPropiedad))
-    .then(() => {
-      Propiedad.findAll().then(propiedades => res.send(propiedades));
-    })
     .catch(err => {
       console.log(err, "error");
     });
@@ -45,18 +39,18 @@ Router.get("/all", (req, res) => {
   Propiedad.findAll().then(propiedades => res.send(propiedades));
 });
 
-Router.post("/update/:id", (req, res) => {
+Router.put("/update/:id", (req, res) => {
   Propiedad.update(req.body, {
     where: {
       id: req.params.id
     }
-  }).then(
+  }).then(() => {
     Propiedad.findAll({
       where: {
         id: req.params.id
       }
-    }).then(propiedad => res.send(propiedad))
-  );
+    }).then(propiedad => res.send(propiedad));
+  });
 });
 
 Router.get("/delete/:id", (req, res) => {
@@ -70,6 +64,12 @@ Router.get("/delete/:id", (req, res) => {
 Router.get("/all/name", (req, res) => {
   Propiedad.findAll({
     order: [["name", "DESC"]]
+  }).then(propiedades => res.send(propiedades));
+});
+
+Router.get("/all/nameA", (req, res) => {
+  Propiedad.findAll({
+    order: [["name", "ASC"]]
   }).then(propiedades => res.send(propiedades));
 });
 

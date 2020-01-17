@@ -6,36 +6,48 @@ import {
   Search,
   Text,
   Image,
-  Select,SearchBtn
+  Select,
+  SearchBtn
 } from "./style";
 import { connect } from "react-redux";
 import {
   fetchByName,
-  fetchProperties,
+  fetchByNameA,
   fetchByPrice,
   fetchByPriceA,
   fetchSearch
 } from "../../redux/actions";
 
+
 class Sidebar extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
-      value:"",
+      value: "",
       seleccion: 0,
       seleccionp: 0,
-      barrio: ["Belgrano", "Recoleta", "Palermo", "Chacarita", "Retiro", "Almagro", "Once"],
+      barrio: [
+        "Belgrano",
+        "Recoleta",
+        "Palermo",
+        "Chacarita",
+        "Retiro",
+        "Almagro",
+        "Once"
+      ],
+      
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
   handleChange(event) {
-    this.setState({value: event.target.value});
+    this.setState({ value: event.target.value });
   }
-  handleSubmit(event) {
-    event.preventDefault();
-      this.props.search(this.state.value)
+  handleSearch() {
+    this.props.search(this.state.value);
+    this.setState({ value: "" });
   }
 
   render() {
@@ -52,7 +64,7 @@ class Sidebar extends Component {
                 this.setState({ seleccion: 1 });
                 this.setState({ seleccionp: 0 });
               } else {
-                this.props.showProperties();
+                this.props.showOrderA();
                 this.setState({ seleccion: 0 });
                 this.setState({ seleccionp: 0 });
               }
@@ -82,29 +94,39 @@ class Sidebar extends Component {
           </Search>
         </Link>
 
-        <form onSubmit={this.handleSubmit}>
-          <Select value={this.state.value} onChange={this.handleChange}>
-            {this.state.barrio.map(item => (
-              <option key={item} value={item}>
-                {item}
-              </option>
-            ))}
-             <option value="" disabled selected>Barrios</option>
-          </Select>
-          <SearchBtn type="submit">Buscar</SearchBtn>
-        </form>
+        <Select value={this.state.value} onChange={this.handleChange}>
+          {this.state.barrio.map(item => (
+            <option key={item} value={item}>
+              {item}
+            </option>
+          ))}
+          <option value="" disabled selected>
+            Barrios
+          </option>
+        </Select>
+        <Link  to={{
+                pathname: `/search`,
+                state: {
+                  barrio: this.state.value,
+                }
+              }}>
+          <SearchBtn onClick={this.handleSearch}>Buscar</SearchBtn>
+        </Link>
       </Container>
     );
   }
 }
 const mapStateToProps = state => ({
-  properties: state.properties
+  searchValues:state.search
 });
 
 const mapDispatchToProps = dispatch => {
   return {
     showOrder: () => {
       dispatch(fetchByName());
+    },
+    showOrderA: () => {
+      dispatch(fetchByNameA());
     },
     showProperties: () => {
       dispatch(fetchProperties());
@@ -121,5 +143,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Sidebar)
-
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);

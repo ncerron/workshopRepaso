@@ -4,13 +4,13 @@ import List from "../components/List";
 import { fetchProperties } from "../redux/actions";
 
 class ListContainer extends Component {
-
+    
   componentDidMount() {
     this.props.showProperties();
   }
 
   render() {
-    return <List properties={this.props.properties} />;
+    return <List properties={this.props.properties}/>;
   }
 }
 

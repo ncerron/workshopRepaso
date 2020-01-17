@@ -5,6 +5,16 @@ const receiveProperties = properties => ({
   properties
 });
 
+const addProperty = property => ({
+  type: "ADD_PROPERTY",
+  property
+});
+
+const search = properties => ({
+  type: "SEARCH_PROPERTIES",
+  properties
+});
+
 const selectedProperty = property => ({
   type: "SELECTED_PROPERTY",
   property
@@ -19,6 +29,7 @@ const updateProperty = property => ({
   type: "UPDATE_PROPERTY",
   property
 });
+////////////////////////////////////////////////
 
 export const fetchProperties = () => dispatch =>
   axios.get("/api/all").then(res => {
@@ -27,6 +38,11 @@ export const fetchProperties = () => dispatch =>
 
 export const fetchByName = () => dispatch =>
   axios.get("/api/all/name").then(res => {
+    dispatch(receiveProperties(res.data));
+  });
+
+export const fetchByNameA = () => dispatch =>
+  axios.get("/api/all/nameA").then(res => {
     dispatch(receiveProperties(res.data));
   });
 
@@ -42,29 +58,25 @@ export const fetchByPriceA = () => dispatch =>
 
 export const fetchSearch = data => dispatch =>
   axios.get(`/api/all/${data}`).then(res => {
-    dispatch(receiveProperties(res.data));
+    dispatch(search(res.data));
   });
 
-export const fetchCreate = property => dispatch => {
+export const fetchCreate = property => dispatch =>
   axios.post("/api/create", property).then(res => {
-    dispatch(receiveProperties(res.data));
+    dispatch(addProperty(res.data));
   });
-};
 
-export const fetchProperty = id => dispatch => {
+export const fetchProperty = id => dispatch =>
   axios.get(`/api/property/${id}`).then(res => {
     dispatch(selectedProperty(res.data));
   });
-};
 
-export const fetchDelete = id => dispatch => {
+export const fetchDelete = id => dispatch =>
   axios.get(`/api/delete/${id}`).then(res => {
     dispatch(deleteProperty(res.data));
   });
-};
 
-export const fetchUpdate = (id, property) => dispatch => {
-  return axios.post(`/api/update/${id}`, property).then(res => {
-    dispatch(updateProperty(res.data));
-  });
-};
+export const fetchUpdate = (id, property) => dispatch =>
+  axios
+    .put(`/api/update/${id}`, property)
+    .then(res => dispatch(updateProperty(res.data)));

@@ -2,19 +2,21 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import CardAdd from "../../components/Card/CardAdd"
 import {
-  fetchCreate
+  fetchCreate, fetchProperties
 } from "../../redux/actions";
 import axios from "axios"
+import Swal from 'sweetalert2'
 
  class CardAddContainer extends Component {
    constructor(props) {
      super(props);
      this.state = {
+       selectImage:"",
        selectedFile: "/images/icons/add.png",
-       img: "",
+       img: "add.png",
        name: "",
        location: "",
-       price: "",
+       price: 0
      };
 
      this.handleHideModal = this.handleHideModal.bind(this);
@@ -26,10 +28,10 @@ import axios from "axios"
    }
 
    handleInputName(event) {
-     this.setState({ name: event.target.value });
+     this.setState({ name: event.target.value.toLowerCase() });
    }
    handleInputLocation(event) {
-     this.setState({ location: event.target.value });
+     this.setState({ location: event.target.value.toLowerCase() });
    }
    handleInputPrice(event) {
      this.setState({ price: event.target.value });
@@ -39,27 +41,36 @@ import axios from "axios"
    }
    handleSelectFile(event) {
      this.setState({
-       //para mostrarlo en el form
+       selectImage: event.target.files[0],
        selectedFile: URL.createObjectURL(event.target.files[0]),
-       img: event.target.files[0].name,
-     })
+       img: event.target.files[0].name
+     });
    }
 
-   handleSubmit() {
+   handleSubmit(event) {
      event.preventDefault();
+
      const formData = new FormData();
-     formData.append('img',this.state.select);
+     formData.append("img", this.state.selectImage);
      const config = {
-         headers: {
-             'content-type': 'multipart/form-data'
-         }
+       headers: {
+         "content-type": "multipart/form-data"
+       }
      };
-     axios.post("/api/upload",formData,config)
-         .then((response) => {
-             //alert("The file is successfully uploaded");
-         }).catch((error) => {
-     });
+     axios
+       .post("/api/upload", formData, config)
+       .catch(error => {console.log("error al cargar la imagen")});
+
      this.props.AddProperty(this.state);
+
+     Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Se agrego la propiedad',
+      showConfirmButton: false,
+      timer: 1000
+    })
+
      this.props.history.push("/");
    }
 
@@ -77,12 +88,22 @@ import axios from "axios"
      );
    }
  }
+
+ const mapStateToProps = state => {
+   return {
+     properties: state.properties
+   };
+ };
+
  const mapDispatchToProps = dispatch => {
    return {
-     AddProperty: input=> {
-       dispatch(fetchCreate(input))
+     AddProperty: input => {
+       dispatch(fetchCreate(input));
+     },
+     showProperties: () => {
+       dispatch(fetchProperties());
      }
    };
  };
 
- export default connect(null, mapDispatchToProps)(CardAddContainer);
+ export default connect(mapStateToProps, mapDispatchToProps)(CardAddContainer);
