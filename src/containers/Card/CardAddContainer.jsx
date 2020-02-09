@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import CardAdd from "../../components/Card/CardAdd"
+import CardEdit from "../../components/Card/CardEdit"
 import {
   fetchCreate, fetchProperties
 } from "../../redux/actions";
@@ -11,6 +11,7 @@ import Swal from 'sweetalert2'
    constructor(props) {
      super(props);
      this.state = {
+       option : "add",
        selectImage:"",
        selectedFile: "/images/icons/add.png",
        img: "add.png",
@@ -37,6 +38,7 @@ import Swal from 'sweetalert2'
      this.setState({ price: event.target.value });
    }
    handleHideModal() {
+    this.setState({ option: ""})
      this.props.history.goBack();
    }
    handleSelectFile(event) {
@@ -69,13 +71,14 @@ import Swal from 'sweetalert2'
       showConfirmButton: false,
       timer: 1000
     })
-
+    this.setState({ option: ""})
      this.props.history.push("/");
    }
 
    render() {
      return (
-       <CardAdd
+       <CardEdit
+         property={this.state}
          handleHideModal={this.handleHideModal}
          handleSelectFile={this.handleSelectFile}
          handleSubmit={this.handleSubmit}
@@ -83,7 +86,7 @@ import Swal from 'sweetalert2'
          handleInputName={this.handleInputName}
          handleInputPrice={this.handleInputPrice}
          selectedFile={this.state.selectedFile}
-       ></CardAdd>
+       ></CardEdit>
      );
    }
  }

@@ -14,12 +14,13 @@ import {
 } from "./style";
 
 export default function CardEdit(props) {
+  console.log(props.property.name)
   return props.property ? (
     <ModalContainer>
       <DescriptionContainer justifyContent="flex-end">
         <CloseModal onClick={props.handleHideModal}>X</CloseModal>
       </DescriptionContainer>
-      <form>
+      <form onSubmit={props.handleSubmit}>
         <Background>
           <ColumnContainer>
             <Input
@@ -68,7 +69,7 @@ export default function CardEdit(props) {
             <DescriptionContainer>
               <Text color={"black"}>Precio: </Text>
               <Input
-              type="number"
+                type="number"
                 name="price"
                 onChange={props.handleInputPrice}
                 defaultValue={props.property.price}
@@ -78,11 +79,17 @@ export default function CardEdit(props) {
               marginTop={"140px"}
               justifyContent={"flex-end"}
             >
-              <Link to={"/add"}>
-                <Button>Agregar</Button>
-              </Link>
-              <Button onClick={props.handleDelete}>Eliminar</Button>
-              <Button onClick={props.handleUpdate}>Guardar</Button>
+              {props.property.option!== "add" ? (
+                <div>
+                  <Link to={"/add"}>
+                    <Button>Agregar</Button>
+                  </Link>
+                  <Button onClick={props.handleDelete}>Eliminar</Button>
+                  <Button onClick={props.handleUpdate}>Guardar</Button>
+                </div>
+              ) : (
+                <Button>Guardar</Button>
+              )}
             </DescriptionContainer>
           </ColumnContainer>
         </Background>

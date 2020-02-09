@@ -45833,78 +45833,6 @@ function Card(props) {
 
 /***/ }),
 
-/***/ "./src/components/Card/CardAdd.jsx":
-/*!*****************************************!*\
-  !*** ./src/components/Card/CardAdd.jsx ***!
-  \*****************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return CardAdd; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_Card_style__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/Card/style */ "./src/components/Card/style.js");
-
-
-function CardAdd(_ref) {
-  var handleHideModal = _ref.handleHideModal,
-      handleSelectFile = _ref.handleSelectFile,
-      handleSubmit = _ref.handleSubmit,
-      handleInputLocation = _ref.handleInputLocation,
-      handleInputName = _ref.handleInputName,
-      handleInputPrice = _ref.handleInputPrice,
-      selectedFile = _ref.selectedFile;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Card_style__WEBPACK_IMPORTED_MODULE_1__["ModalContainer"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Card_style__WEBPACK_IMPORTED_MODULE_1__["DescriptionContainer"], {
-    justifyContent: "flex-end"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Card_style__WEBPACK_IMPORTED_MODULE_1__["CloseModal"], {
-    onClick: handleHideModal
-  }, "X")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-    onSubmit: handleSubmit
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Card_style__WEBPACK_IMPORTED_MODULE_1__["Background"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Card_style__WEBPACK_IMPORTED_MODULE_1__["ColumnContainer"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Card_style__WEBPACK_IMPORTED_MODULE_1__["Input"], {
-    placeholder: "Ingrese Nombre",
-    name: "name",
-    onChange: handleInputName
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Card_style__WEBPACK_IMPORTED_MODULE_1__["Image"] //onChange={handleSelectFile}
-  //name="selected"
-  , {
-    src: selectedFile,
-    width: "200px",
-    height: "150px",
-    marginTop: "40px"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Card_style__WEBPACK_IMPORTED_MODULE_1__["Label"], {
-    For: "file",
-    marginTop: "-30px"
-  }, " ", "Elija una imagen", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Card_style__WEBPACK_IMPORTED_MODULE_1__["Input"], {
-    type: "file" //className="upload"
-    //id="file"
-    ,
-    onChange: handleSelectFile,
-    name: "img",
-    accept: ".jpg,.png"
-  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Card_style__WEBPACK_IMPORTED_MODULE_1__["ColumnContainer"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Card_style__WEBPACK_IMPORTED_MODULE_1__["DescriptionContainer"], {
-    marginTop: "70px"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Card_style__WEBPACK_IMPORTED_MODULE_1__["Text"], {
-    color: "black"
-  }, "Lugar: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Card_style__WEBPACK_IMPORTED_MODULE_1__["Input"], {
-    marginLeft: "9px",
-    name: "location",
-    onChange: handleInputLocation
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Card_style__WEBPACK_IMPORTED_MODULE_1__["DescriptionContainer"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Card_style__WEBPACK_IMPORTED_MODULE_1__["Text"], {
-    color: "black"
-  }, "Precio: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Card_style__WEBPACK_IMPORTED_MODULE_1__["Input"], {
-    name: "prices",
-    onChange: handleInputPrice,
-    type: "number"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Card_style__WEBPACK_IMPORTED_MODULE_1__["DescriptionContainer"], {
-    marginTop: "140px",
-    justifyContent: "flex-end"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Card_style__WEBPACK_IMPORTED_MODULE_1__["Button"], null, "Guardar"))))));
-}
-
-/***/ }),
-
 /***/ "./src/components/Card/CardEdit.jsx":
 /*!******************************************!*\
   !*** ./src/components/Card/CardEdit.jsx ***!
@@ -45923,11 +45851,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function CardEdit(props) {
+  console.log(props.property.name);
   return props.property ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_2__["ModalContainer"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_2__["DescriptionContainer"], {
     justifyContent: "flex-end"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_2__["CloseModal"], {
     onClick: props.handleHideModal
-  }, "X")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_2__["Background"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_2__["ColumnContainer"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_2__["Input"], {
+  }, "X")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: props.handleSubmit
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_2__["Background"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_2__["ColumnContainer"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_2__["Input"], {
     width: "300px",
     name: "name",
     onChange: props.handleInputName,
@@ -45971,13 +45902,13 @@ function CardEdit(props) {
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_2__["DescriptionContainer"], {
     marginTop: "140px",
     justifyContent: "flex-end"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+  }, props.property.option !== "add" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/add"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_2__["Button"], null, "Agregar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_2__["Button"], {
     onClick: props.handleDelete
   }, "Eliminar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_2__["Button"], {
     onClick: props.handleUpdate
-  }, "Guardar")))))) : "Problemas al mostrar la Propiedad";
+  }, "Guardar")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_2__["Button"], null, "Guardar")))))) : "Problemas al mostrar la Propiedad";
 }
 
 /***/ }),
@@ -46289,7 +46220,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _components_Card_CardAdd__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/Card/CardAdd */ "./src/components/Card/CardAdd.jsx");
+/* harmony import */ var _components_Card_CardEdit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/Card/CardEdit */ "./src/components/Card/CardEdit.jsx");
 /* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
@@ -46332,6 +46263,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(CardAddContainer).call(this, props));
     _this.state = {
+      option: "add",
       selectImage: "",
       selectedFile: "/images/icons/add.png",
       img: "add.png",
@@ -46372,6 +46304,9 @@ function (_Component) {
   }, {
     key: "handleHideModal",
     value: function handleHideModal() {
+      this.setState({
+        option: ""
+      });
       this.props.history.goBack();
     }
   }, {
@@ -46405,12 +46340,16 @@ function (_Component) {
         showConfirmButton: false,
         timer: 1000
       });
+      this.setState({
+        option: ""
+      });
       this.props.history.push("/");
     }
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Card_CardAdd__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Card_CardEdit__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        property: this.state,
         handleHideModal: this.handleHideModal,
         handleSelectFile: this.handleSelectFile,
         handleSubmit: this.handleSubmit,
