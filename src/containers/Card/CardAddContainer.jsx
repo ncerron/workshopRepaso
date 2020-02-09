@@ -49,7 +49,6 @@ import Swal from 'sweetalert2'
 
    handleSubmit(event) {
      event.preventDefault();
-
      const formData = new FormData();
      formData.append("img", this.state.selectImage);
      const config = {

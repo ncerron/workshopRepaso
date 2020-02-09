@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import createStore from "../../redux/store";
 import {
   Container,
   Header,
@@ -20,13 +21,12 @@ import {
 
 
 class Sidebar extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
       value: "",
-      seleccion: 0,
-      seleccionp: 0,
+      nombre: "nombre_desc",
+      precio: "precio_desc",
       barrio: [
         "Belgrano",
         "Recoleta",
@@ -35,8 +35,7 @@ class Sidebar extends Component {
         "Retiro",
         "Almagro",
         "Once"
-      ],
-      
+      ]
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
@@ -59,14 +58,16 @@ class Sidebar extends Component {
         <Link to="/order">
           <Search
             onClick={() => {
-              if (this.state.seleccion === 0) {
-                this.props.showOrder();
-                this.setState({ seleccion: 1 });
-                this.setState({ seleccionp: 0 });
-              } else {
+              if (this.state.nombre === "nombre_asc") {
                 this.props.showOrderA();
-                this.setState({ seleccion: 0 });
-                this.setState({ seleccionp: 0 });
+                this.setState({ nombre: "nombre_desc" });
+              } else {
+                this.props.showOrder();
+                this.setState({ nombre: "nombre_asc" });
+              }
+              if (createStore.getState().properties.length > 0) {
+                let properties_store = createStore.getState().properties;
+                localStorage.setItem("LS", JSON.stringify(properties_store));
               }
             }}
           >
@@ -78,14 +79,16 @@ class Sidebar extends Component {
         <Link to="/order">
           <Search
             onClick={() => {
-              if (this.state.seleccionp === 0) {
-                this.props.showByPrice();
-                this.setState({ seleccion: 0 });
-                this.setState({ seleccionp: 1 });
-              } else {
+              if (this.state.precio === "precio_asc") {
                 this.props.showByPriceA();
-                this.setState({ seleccion: 0 });
-                this.setState({ seleccionp: 0 });
+                this.setState({ precio: "precio_desc" });
+              } else {
+                this.props.showByPrice();
+                this.setState({ precio: "precio_asc" });
+              }
+              if (createStore.getState().properties.length > 0) {
+                let properties_store = createStore.getState().properties;
+                localStorage.setItem("LS", JSON.stringify(properties_store));
               }
             }}
           >
@@ -104,12 +107,14 @@ class Sidebar extends Component {
             Barrios
           </option>
         </Select>
-        <Link  to={{
-                pathname: `/search`,
-                state: {
-                  barrio: this.state.value,
-                }
-              }}>
+        <Link
+          to={{
+            pathname: `/search`,
+            state: {
+              barrio: this.state.value
+            }
+          }}
+        >
           <SearchBtn onClick={this.handleSearch}>Buscar</SearchBtn>
         </Link>
       </Container>

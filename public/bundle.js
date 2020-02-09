@@ -46186,7 +46186,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Order(props) {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.properties.length > 0 ? props.properties.map(function (item) {
+  var properties = "";
+
+  if (!props.properties.length > 0) {
+    properties = JSON.parse(localStorage.getItem("LS"));
+  } else {
+    properties = props.properties;
+  }
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, properties.length > 0 ? properties.map(function (item) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
       key: item.id,
       to: {
@@ -46877,9 +46885,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style */ "./src/containers/Sidebar/style.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.js");
+/* harmony import */ var _redux_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../redux/store */ "./src/redux/store.js");
+/* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./style */ "./src/containers/Sidebar/style.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../redux/actions */ "./src/redux/actions.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -46904,6 +46913,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var Sidebar =
 /*#__PURE__*/
 function (_Component) {
@@ -46917,8 +46927,8 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Sidebar).call(this, props));
     _this.state = {
       value: "",
-      seleccion: 0,
-      seleccionp: 0,
+      nombre: "nombre_desc",
+      precio: "precio_desc",
       barrio: ["Belgrano", "Recoleta", "Palermo", "Chacarita", "Retiro", "Almagro", "Once"]
     };
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
@@ -46946,65 +46956,59 @@ function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_2__["Container"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_3__["Container"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_2__["Header"], null, "PropertyApp")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_3__["Header"], null, "PropertyApp")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/order"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_2__["Search"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_3__["Search"], {
         onClick: function onClick() {
-          if (_this2.state.seleccion === 0) {
-            _this2.props.showOrder();
-
-            _this2.setState({
-              seleccion: 1
-            });
-
-            _this2.setState({
-              seleccionp: 0
-            });
-          } else {
+          if (_this2.state.nombre === "nombre_asc") {
             _this2.props.showOrderA();
 
             _this2.setState({
-              seleccion: 0
-            });
-
-            _this2.setState({
-              seleccionp: 0
-            });
-          }
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_2__["Image"], {
-        src: "/images/icons/flechas.svg"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_2__["Text"], null, "Nombre"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/order"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_2__["Search"], {
-        onClick: function onClick() {
-          if (_this2.state.seleccionp === 0) {
-            _this2.props.showByPrice();
-
-            _this2.setState({
-              seleccion: 0
-            });
-
-            _this2.setState({
-              seleccionp: 1
+              nombre: "nombre_desc"
             });
           } else {
+            _this2.props.showOrder();
+
+            _this2.setState({
+              nombre: "nombre_asc"
+            });
+          }
+
+          if (_redux_store__WEBPACK_IMPORTED_MODULE_2__["default"].getState().properties.length > 0) {
+            var properties_store = _redux_store__WEBPACK_IMPORTED_MODULE_2__["default"].getState().properties;
+            localStorage.setItem("LS", JSON.stringify(properties_store));
+          }
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_3__["Image"], {
+        src: "/images/icons/flechas.svg"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_3__["Text"], null, "Nombre"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/order"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_3__["Search"], {
+        onClick: function onClick() {
+          if (_this2.state.precio === "precio_asc") {
             _this2.props.showByPriceA();
 
             _this2.setState({
-              seleccion: 0
+              precio: "precio_desc"
             });
+          } else {
+            _this2.props.showByPrice();
 
             _this2.setState({
-              seleccionp: 0
+              precio: "precio_asc"
             });
           }
+
+          if (_redux_store__WEBPACK_IMPORTED_MODULE_2__["default"].getState().properties.length > 0) {
+            var properties_store = _redux_store__WEBPACK_IMPORTED_MODULE_2__["default"].getState().properties;
+            localStorage.setItem("LS", JSON.stringify(properties_store));
+          }
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_2__["Image"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_3__["Image"], {
         src: "/images/icons/flechas.svg"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_2__["Text"], null, "Precio"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_2__["Select"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_3__["Text"], null, "Precio"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_3__["Select"], {
         value: this.state.value,
         onChange: this.handleChange
       }, this.state.barrio.map(function (item) {
@@ -47023,7 +47027,7 @@ function (_Component) {
             barrio: this.state.value
           }
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_2__["SearchBtn"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_3__["SearchBtn"], {
         onClick: this.handleSearch
       }, "Buscar")));
     }
@@ -47041,27 +47045,27 @@ var mapStateToProps = function mapStateToProps(state) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     showOrder: function showOrder() {
-      dispatch(Object(_redux_actions__WEBPACK_IMPORTED_MODULE_4__["fetchByName"])());
+      dispatch(Object(_redux_actions__WEBPACK_IMPORTED_MODULE_5__["fetchByName"])());
     },
     showOrderA: function showOrderA() {
-      dispatch(Object(_redux_actions__WEBPACK_IMPORTED_MODULE_4__["fetchByNameA"])());
+      dispatch(Object(_redux_actions__WEBPACK_IMPORTED_MODULE_5__["fetchByNameA"])());
     },
     showProperties: function showProperties() {
       dispatch(fetchProperties());
     },
     showByPrice: function showByPrice() {
-      dispatch(Object(_redux_actions__WEBPACK_IMPORTED_MODULE_4__["fetchByPrice"])());
+      dispatch(Object(_redux_actions__WEBPACK_IMPORTED_MODULE_5__["fetchByPrice"])());
     },
     showByPriceA: function showByPriceA() {
-      dispatch(Object(_redux_actions__WEBPACK_IMPORTED_MODULE_4__["fetchByPriceA"])());
+      dispatch(Object(_redux_actions__WEBPACK_IMPORTED_MODULE_5__["fetchByPriceA"])());
     },
     search: function search(value) {
-      dispatch(Object(_redux_actions__WEBPACK_IMPORTED_MODULE_4__["fetchSearch"])(value));
+      dispatch(Object(_redux_actions__WEBPACK_IMPORTED_MODULE_5__["fetchSearch"])(value));
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(mapStateToProps, mapDispatchToProps)(Sidebar));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["connect"])(mapStateToProps, mapDispatchToProps)(Sidebar));
 
 /***/ }),
 

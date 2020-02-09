@@ -52,7 +52,7 @@ export default (state = initialState, action) => {
     case "SEARCH_PROPERTIES":
       return {
         ...state,
-        search: action.properties
+        search: action.properties,
       };
 
     default:

@@ -3,6 +3,7 @@ import Card from "../components/Card/Card";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
+
 function Search({ search}) {
   return (
     <div>

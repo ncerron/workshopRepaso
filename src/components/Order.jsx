@@ -4,11 +4,16 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 function Order(props) {
-  
+  let properties = ""
+  if (!props.properties.length>0) {
+    properties = JSON.parse(localStorage.getItem("LS"))
+  }else{
+    properties= props.properties
+  }
   return (
     <div>
-      { props.properties.length > 0
-        ? props.properties.map(item => (
+      { properties.length > 0
+        ? properties.map(item => (
             <Link  key={item.id}
               to={{
                 pathname: `/edit/${item.id}`,
@@ -21,7 +26,6 @@ function Order(props) {
               }}
             >
               <Card
-                
                 name={item.name}
                 price={item.price}
                 location={item.location}
@@ -35,6 +39,6 @@ function Order(props) {
 }
 const mapStateToProps = state => ({
   properties: state.properties
-});
+}); 
 
 export default connect(mapStateToProps, null)(Order);
