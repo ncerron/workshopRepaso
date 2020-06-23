@@ -46721,7 +46721,7 @@ function (_Component) {
   _createClass(index, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_2__["Container"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_2__["Side"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Sidebar_Sidebar__WEBPACK_IMPORTED_MODULE_5__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_2__["Section"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_2__["MiddleContainer"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_2__["Container"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_2__["Side"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Sidebar_Sidebar__WEBPACK_IMPORTED_MODULE_5__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_2__["Section"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         exact: true,
         path: "/",
         component: _ListContainer__WEBPACK_IMPORTED_MODULE_3__["default"]
@@ -46745,7 +46745,7 @@ function (_Component) {
         exact: true,
         path: "/edit/:id",
         component: _Card_CardEditContainer__WEBPACK_IMPORTED_MODULE_7__["default"]
-      })))));
+      }))));
     }
   }]);
 
@@ -46760,7 +46760,7 @@ function (_Component) {
 /*!**************************************!*\
   !*** ./src/containers/Main/style.js ***!
   \**************************************/
-/*! exports provided: Container, Side, Section, MiddleContainer, AddButton */
+/*! exports provided: Container, Side, Section, AddButton */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46768,7 +46768,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Container", function() { return Container; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Side", function() { return Side; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Section", function() { return Section; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MiddleContainer", function() { return MiddleContainer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddButton", function() { return AddButton; });
 /* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @emotion/styled */ "./node_modules/@emotion/styled/dist/styled.browser.esm.js");
 
@@ -46780,23 +46779,14 @@ var Container = _emotion_styled__WEBPACK_IMPORTED_MODULE_0__["default"].div({
 });
 var Side = _emotion_styled__WEBPACK_IMPORTED_MODULE_0__["default"].div({
   display: "flex",
-  width: "22%",
-  minWidth: "160px",
+  width: "20%",
+  minWidth: "220px",
   backgroundColor: "#573694",
   boxShadow: "2px 2px 2px 2px rgba(207,207,207,1)"
 });
 var Section = _emotion_styled__WEBPACK_IMPORTED_MODULE_0__["default"].div({
-  display: "flex",
-  width: "78%",
-  flexDirection: "column",
-  alignItems: "flex-end"
-});
-var MiddleContainer = _emotion_styled__WEBPACK_IMPORTED_MODULE_0__["default"].div({
-  display: "flex",
-  minWidth: "700px",
-  justifyContent: "center",
-  height: "100%",
-  width: "100%"
+  margin: "auto",
+  width: "800px"
 });
 var AddButton = _emotion_styled__WEBPACK_IMPORTED_MODULE_0__["default"].button({
   width: "180px",
@@ -46866,8 +46856,8 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Sidebar).call(this, props));
     _this.state = {
       value: "",
-      nombre: "nombre_desc",
-      precio: "precio_desc",
+      nombre: true,
+      precio: true,
       barrio: ["Belgrano", "Recoleta", "Palermo", "Chacarita", "Retiro", "Almagro", "Once"]
     };
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
@@ -46901,18 +46891,16 @@ function (_Component) {
         to: "/order"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_3__["Search"], {
         onClick: function onClick() {
-          if (_this2.state.nombre === "nombre_asc") {
-            _this2.props.showOrderA();
+          _this2.setState(function (state) {
+            return {
+              nombre: !state.nombre
+            };
+          });
 
-            _this2.setState({
-              nombre: "nombre_desc"
-            });
+          if (_this2.state.nombre === true) {
+            _this2.props.showOrder("asc");
           } else {
-            _this2.props.showOrder();
-
-            _this2.setState({
-              nombre: "nombre_asc"
-            });
+            _this2.props.showOrder("desc");
           }
 
           if (_redux_store__WEBPACK_IMPORTED_MODULE_2__["default"].getState().properties.length > 0) {
@@ -46926,18 +46914,16 @@ function (_Component) {
         to: "/order"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_3__["Search"], {
         onClick: function onClick() {
-          if (_this2.state.precio === "precio_asc") {
-            _this2.props.showByPriceA();
+          _this2.setState(function (state) {
+            return {
+              precio: !state.precio
+            };
+          });
 
-            _this2.setState({
-              precio: "precio_desc"
-            });
+          if (_this2.state.precio === true) {
+            _this2.props.showByPrice("asc");
           } else {
-            _this2.props.showByPrice();
-
-            _this2.setState({
-              precio: "precio_asc"
-            });
+            _this2.props.showByPrice("desc");
           }
 
           if (_redux_store__WEBPACK_IMPORTED_MODULE_2__["default"].getState().properties.length > 0) {
@@ -46947,18 +46933,17 @@ function (_Component) {
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_3__["Image"], {
         src: "/images/icons/flechas.svg"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_3__["Text"], null, "Precio"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_3__["Select"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_3__["Text"], null, "Precio"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_3__["Select"], {
         value: this.state.value,
-        onChange: this.handleChange
+        onChange: this.handleChange,
+        selected: true
       }, this.state.barrio.map(function (item) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
           key: item,
           value: item
         }, item);
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "",
-        disabled: true,
-        selected: true
+        value: ""
       }, "Barrios")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: {
           pathname: "/search",
@@ -46968,7 +46953,7 @@ function (_Component) {
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_3__["SearchBtn"], {
         onClick: this.handleSearch
-      }, "Buscar")));
+      }, "Buscar"))));
     }
   }]);
 
@@ -46983,20 +46968,14 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    showOrder: function showOrder() {
-      dispatch(Object(_redux_actions__WEBPACK_IMPORTED_MODULE_5__["fetchByName"])());
-    },
-    showOrderA: function showOrderA() {
-      dispatch(Object(_redux_actions__WEBPACK_IMPORTED_MODULE_5__["fetchByNameA"])());
+    showOrder: function showOrder(value) {
+      dispatch(Object(_redux_actions__WEBPACK_IMPORTED_MODULE_5__["fetchByName"])(value));
     },
     showProperties: function showProperties() {
       dispatch(fetchProperties());
     },
-    showByPrice: function showByPrice() {
-      dispatch(Object(_redux_actions__WEBPACK_IMPORTED_MODULE_5__["fetchByPrice"])());
-    },
-    showByPriceA: function showByPriceA() {
-      dispatch(Object(_redux_actions__WEBPACK_IMPORTED_MODULE_5__["fetchByPriceA"])());
+    showByPrice: function showByPrice(value) {
+      dispatch(Object(_redux_actions__WEBPACK_IMPORTED_MODULE_5__["fetchByPrice"])(value));
     },
     search: function search(value) {
       dispatch(Object(_redux_actions__WEBPACK_IMPORTED_MODULE_5__["fetchSearch"])(value));
@@ -47111,16 +47090,14 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_
 /*!******************************!*\
   !*** ./src/redux/actions.js ***!
   \******************************/
-/*! exports provided: fetchProperties, fetchByName, fetchByNameA, fetchByPrice, fetchByPriceA, fetchSearch, fetchCreate, fetchProperty, fetchDelete, fetchUpdate */
+/*! exports provided: fetchProperties, fetchByName, fetchByPrice, fetchSearch, fetchCreate, fetchProperty, fetchDelete, fetchUpdate */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchProperties", function() { return fetchProperties; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchByName", function() { return fetchByName; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchByNameA", function() { return fetchByNameA; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchByPrice", function() { return fetchByPrice; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchByPriceA", function() { return fetchByPriceA; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchSearch", function() { return fetchSearch; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCreate", function() { return fetchCreate; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchProperty", function() { return fetchProperty; });
@@ -47180,30 +47157,16 @@ var fetchProperties = function fetchProperties() {
     });
   };
 };
-var fetchByName = function fetchByName() {
+var fetchByName = function fetchByName(data) {
   return function (dispatch) {
-    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/all/name").then(function (res) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/all/name/".concat(data)).then(function (res) {
       dispatch(receiveProperties(res.data));
     });
   };
 };
-var fetchByNameA = function fetchByNameA() {
+var fetchByPrice = function fetchByPrice(data) {
   return function (dispatch) {
-    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/all/nameA").then(function (res) {
-      dispatch(receiveProperties(res.data));
-    });
-  };
-};
-var fetchByPrice = function fetchByPrice() {
-  return function (dispatch) {
-    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/all/price").then(function (res) {
-      dispatch(receiveProperties(res.data));
-    });
-  };
-};
-var fetchByPriceA = function fetchByPriceA() {
-  return function (dispatch) {
-    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/all/priceA").then(function (res) {
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/all/price/".concat(data)).then(function (res) {
       dispatch(receiveProperties(res.data));
     });
   };

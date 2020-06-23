@@ -17,7 +17,6 @@ export default class index extends Component {
           <Sidebar></Sidebar>
         </Side>
         <Section> 
-          <MiddleContainer >
             <Switch>
               <Route exact path="/" component={ListContainer} />
               <Route exact path="/resultado" component={ListContainer} />
@@ -26,7 +25,6 @@ export default class index extends Component {
              <Route exact path="/add" component={CardAddContainer} />
              <Route exact path="/edit/:id" component={CardEditContainer} />
             </Switch>
-          </MiddleContainer>
         </Section>
       </Container>
     );

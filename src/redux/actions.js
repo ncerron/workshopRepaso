@@ -1,82 +1,73 @@
 import axios from "axios";
 
-const receiveProperties = properties => ({
+const receiveProperties = (properties) => ({
   type: "RECEIVE_PROPERTIES",
-  properties
+  properties,
 });
 
-const addProperty = property => ({
+const addProperty = (property) => ({
   type: "ADD_PROPERTY",
-  property
+  property,
 });
 
-const search = properties => ({
+const search = (properties) => ({
   type: "SEARCH_PROPERTIES",
-  properties
+  properties,
 });
 
-const selectedProperty = property => ({
+const selectedProperty = (property) => ({
   type: "SELECTED_PROPERTY",
-  property
+  property,
 });
 
-const deleteProperty = property => ({
+const deleteProperty = (property) => ({
   type: "DELETE_PROPERTY",
-  property
+  property,
 });
 
-const updateProperty = property => ({
+const updateProperty = (property) => ({
   type: "UPDATE_PROPERTY",
-  property
+  property,
 });
 ////////////////////////////////////////////////
 
-export const fetchProperties = () => dispatch =>
-  axios.get("/api/all").then(res => {
+export const fetchProperties = () => (dispatch) =>
+  axios.get("/api/all").then((res) => {
     dispatch(receiveProperties(res.data));
   });
 
-export const fetchByName = () => dispatch =>
-  axios.get("/api/all/name").then(res => {
+export const fetchByName = (data) => (dispatch) => {
+  axios.get(`/api/all/name/${data}`).then((res) => {
+    dispatch(receiveProperties(res.data));
+  });
+};
+
+export const fetchByPrice = (data) => (dispatch) =>
+  axios.get(`/api/all/price/${data}`).then((res) => {
     dispatch(receiveProperties(res.data));
   });
 
-export const fetchByNameA = () => dispatch =>
-  axios.get("/api/all/nameA").then(res => {
-    dispatch(receiveProperties(res.data));
-  });
-
-export const fetchByPrice = () => dispatch =>
-  axios.get("/api/all/price").then(res => {
-    dispatch(receiveProperties(res.data));
-  });
-
-export const fetchByPriceA = () => dispatch =>
-  axios.get("/api/all/priceA").then(res => {
-    dispatch(receiveProperties(res.data));
-  });
-
-export const fetchSearch = data => dispatch =>
-  axios.get(`/api/all/${data}`).then(res => {
+export const fetchSearch = (data) => (dispatch) =>
+  axios.get(`/api/all/${data}`).then((res) => {
     dispatch(search(res.data));
   });
 
-export const fetchCreate = property => dispatch =>
-  axios.post("/api/create", property).then(res => {
+export const fetchCreate = (property) => (dispatch) =>
+  axios.post("/api/create", property).then((res) => {
     dispatch(addProperty(res.data));
   });
 
-export const fetchProperty = id => dispatch =>
-  axios.get(`/api/property/${id}`).then(res => {
+export const fetchProperty = (id) => (dispatch) =>
+  axios.get(`/api/property/${id}`).then((res) => {
     dispatch(selectedProperty(res.data));
   });
 
-export const fetchDelete = id => dispatch =>
-  axios.get(`/api/delete/${id}`).then(res => {
+export const fetchDelete = (id) => (dispatch) =>
+  axios.get(`/api/delete/${id}`).then((res) => {
     dispatch(deleteProperty(res.data));
   });
 
-export const fetchUpdate = (id, property) => dispatch =>
+export const fetchUpdate = (id, property) => (dispatch) =>
   axios
     .put(`/api/update/${id}`, property)
-    .then(res => dispatch(updateProperty(res.data)));
+    .then((res) => dispatch(updateProperty(res.data)));

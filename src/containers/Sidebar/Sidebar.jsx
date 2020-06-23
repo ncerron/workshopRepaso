@@ -13,20 +13,17 @@ import {
 import { connect } from "react-redux";
 import {
   fetchByName,
-  fetchByNameA,
   fetchByPrice,
-  fetchByPriceA,
   fetchSearch
 } from "../../redux/actions";
-
 
 class Sidebar extends Component {
   constructor(props) {
     super(props);
     this.state = {
       value: "",
-      nombre: "nombre_desc",
-      precio: "precio_desc",
+      nombre: true,
+      precio: true,
       barrio: [
         "Belgrano",
         "Recoleta",
@@ -58,12 +55,11 @@ class Sidebar extends Component {
         <Link to="/order">
           <Search
             onClick={() => {
-              if (this.state.nombre === "nombre_asc") {
-                this.props.showOrderA();
-                this.setState({ nombre: "nombre_desc" });
+              this.setState(state=>({nombre:!state.nombre}))
+              if (this.state.nombre === true) {
+                this.props.showOrder("asc");
               } else {
-                this.props.showOrder();
-                this.setState({ nombre: "nombre_asc" });
+                this.props.showOrder("desc");
               }
               if (createStore.getState().properties.length > 0) {
                 let properties_store = createStore.getState().properties;
@@ -79,12 +75,11 @@ class Sidebar extends Component {
         <Link to="/order">
           <Search
             onClick={() => {
-              if (this.state.precio === "precio_asc") {
-                this.props.showByPriceA();
-                this.setState({ precio: "precio_desc" });
+              this.setState(state=>({precio:!state.precio}))
+              if (this.state.precio === true) {
+                this.props.showByPrice("asc");
               } else {
-                this.props.showByPrice();
-                this.setState({ precio: "precio_asc" });
+                this.props.showByPrice("desc");
               }
               if (createStore.getState().properties.length > 0) {
                 let properties_store = createStore.getState().properties;
@@ -96,14 +91,14 @@ class Sidebar extends Component {
             <Text>Precio</Text>
           </Search>
         </Link>
-
-        <Select value={this.state.value} onChange={this.handleChange}>
+      <div>
+      <Select value={this.state.value} onChange={this.handleChange} selected>
           {this.state.barrio.map(item => (
             <option key={item} value={item}>
               {item}
             </option>
           ))}
-          <option value="" disabled selected>
+          <option value="" >
             Barrios
           </option>
         </Select>
@@ -116,7 +111,8 @@ class Sidebar extends Component {
           }}
         >
           <SearchBtn onClick={this.handleSearch}>Buscar</SearchBtn>
-        </Link>
+        </Link> 
+      </div>
       </Container>
     );
   }
@@ -127,20 +123,14 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    showOrder: () => {
-      dispatch(fetchByName());
-    },
-    showOrderA: () => {
-      dispatch(fetchByNameA());
+    showOrder: value => {
+      dispatch(fetchByName(value));
     },
     showProperties: () => {
       dispatch(fetchProperties());
     },
-    showByPrice: () => {
-      dispatch(fetchByPrice());
-    },
-    showByPriceA: () => {
-      dispatch(fetchByPriceA());
+    showByPrice: value => {
+      dispatch(fetchByPrice(value));
     },
     search: value => {
       dispatch(fetchSearch(value));
