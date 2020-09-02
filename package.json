@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start_node": "nodemon index.js",
     "build": "webpack -w",
-    "seed": "node seed.js"
+    "seed": "node seed.js",
+    "start": "node server.js",
+    "startDev": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
