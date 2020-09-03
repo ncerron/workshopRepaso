@@ -10,6 +10,8 @@ app.use(bodyParser.urlencoded({ extended: true })); //
 
 app.use(express.static(path.join(__dirname, "./public")));
 
+const port = process.env.PORT || 3000;
+
 app.use("/api", router);
 
 app.get("/*", (req, res) => {
@@ -18,6 +20,6 @@ app.get("/*", (req, res) => {
 
 db.sync({ force: false })
   .then(() => {
-    app.listen(3001, () => console.log("Server running on port 3001"));
+    app.listen(port, () => console.log("Server running on port 3001"));
   })
   .catch(console.log);
