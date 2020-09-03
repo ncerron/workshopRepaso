@@ -47149,58 +47149,67 @@ var updateProperty = function updateProperty(property) {
 }; ////////////////////////////////////////////////
 
 
+var API_URL;
+
+if (false) {} else {
+  API_URL = "http://localhost:3000";
+}
+
+var clienteAxios = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
+  baseURL: API_URL
+});
 var fetchProperties = function fetchProperties() {
   return function (dispatch) {
-    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/all").then(function (res) {
+    return clienteAxios.get("/api/all").then(function (res) {
       dispatch(receiveProperties(res.data));
     });
   };
 };
 var fetchByName = function fetchByName(data) {
   return function (dispatch) {
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/all/name/".concat(data)).then(function (res) {
+    clienteAxios.get("/api/all/name/".concat(data)).then(function (res) {
       dispatch(receiveProperties(res.data));
     });
   };
 };
 var fetchByPrice = function fetchByPrice(data) {
   return function (dispatch) {
-    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/all/price/".concat(data)).then(function (res) {
+    return clienteAxios.get("/api/all/price/".concat(data)).then(function (res) {
       dispatch(receiveProperties(res.data));
     });
   };
 };
 var fetchSearch = function fetchSearch(data) {
   return function (dispatch) {
-    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/all/".concat(data)).then(function (res) {
+    return clienteAxios.get("/api/all/".concat(data)).then(function (res) {
       dispatch(search(res.data));
     });
   };
 };
 var fetchCreate = function fetchCreate(property) {
   return function (dispatch) {
-    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/create", property).then(function (res) {
+    return clienteAxios.post("/api/create", property).then(function (res) {
       dispatch(addProperty(res.data));
     });
   };
 };
 var fetchProperty = function fetchProperty(id) {
   return function (dispatch) {
-    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/property/".concat(id)).then(function (res) {
+    return clienteAxios.get("/api/property/".concat(id)).then(function (res) {
       dispatch(selectedProperty(res.data));
     });
   };
 };
 var fetchDelete = function fetchDelete(id) {
   return function (dispatch) {
-    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/delete/".concat(id)).then(function (res) {
+    return clienteAxios.get("/api/delete/".concat(id)).then(function (res) {
       dispatch(deleteProperty(res.data));
     });
   };
 };
 var fetchUpdate = function fetchUpdate(id, property) {
   return function (dispatch) {
-    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/update/".concat(id), property).then(function (res) {
+    return clienteAxios.put("/api/update/".concat(id), property).then(function (res) {
       return dispatch(updateProperty(res.data));
     });
   };

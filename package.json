@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack -w",
+    "build": "webpack -w --mode production",
+    "webpack": "webpack -w --mode development",
     "start": "node index.js",
     "startDev": "nodemon server.js",
     "seed": "node seed.js",
-    "heroku-prebuild": "npm install",
-    "heroku-postbuild":  "npm install && npm run build && npm run seed"
+    "heroku-postbuild":  "npm run seed"
 
   },
   "keywords": [],

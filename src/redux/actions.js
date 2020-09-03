@@ -31,43 +31,55 @@ const updateProperty = (property) => ({
 });
 ////////////////////////////////////////////////
 
+let API_URL;
+
+if (process.env.NODE_ENV == "production") {
+  API_URL = process.env.API_URL;
+} else {
+  API_URL = "http://localhost:3000";
+}
+
+const clienteAxios = axios.create({
+  baseURL: API_URL,
+});
+
 export const fetchProperties = () => (dispatch) =>
-  axios.get("/api/all").then((res) => {
+  clienteAxios.get("/api/all").then((res) => {
     dispatch(receiveProperties(res.data));
   });
 
 export const fetchByName = (data) => (dispatch) => {
-  axios.get(`/api/all/name/${data}`).then((res) => {
+  clienteAxios.get(`/api/all/name/${data}`).then((res) => {
     dispatch(receiveProperties(res.data));
   });
 };
 
 export const fetchByPrice = (data) => (dispatch) =>
-  axios.get(`/api/all/price/${data}`).then((res) => {
+  clienteAxios.get(`/api/all/price/${data}`).then((res) => {
     dispatch(receiveProperties(res.data));
   });
 
 export const fetchSearch = (data) => (dispatch) =>
-  axios.get(`/api/all/${data}`).then((res) => {
+  clienteAxios.get(`/api/all/${data}`).then((res) => {
     dispatch(search(res.data));
   });
 
 export const fetchCreate = (property) => (dispatch) =>
-  axios.post("/api/create", property).then((res) => {
+  clienteAxios.post("/api/create", property).then((res) => {
     dispatch(addProperty(res.data));
   });
 
 export const fetchProperty = (id) => (dispatch) =>
-  axios.get(`/api/property/${id}`).then((res) => {
+  clienteAxios.get(`/api/property/${id}`).then((res) => {
     dispatch(selectedProperty(res.data));
   });
 
 export const fetchDelete = (id) => (dispatch) =>
-  axios.get(`/api/delete/${id}`).then((res) => {
+  clienteAxios.get(`/api/delete/${id}`).then((res) => {
     dispatch(deleteProperty(res.data));
   });
 
 export const fetchUpdate = (id, property) => (dispatch) =>
-  axios
+  clienteAxios
     .put(`/api/update/${id}`, property)
     .then((res) => dispatch(updateProperty(res.data)));
