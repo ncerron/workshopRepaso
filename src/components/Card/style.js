@@ -1,11 +1,10 @@
 import styled from "@emotion/styled";
 
 export const Background = styled.div({
-  display: "flex"
+  display: "flex",
 });
 
 export const ModalContainer = styled.div({
-  position: "fixed",
   zIndex: "10",
   height: "400px",
   width: "700px",
@@ -15,7 +14,7 @@ export const ModalContainer = styled.div({
   margin: "30px",
   boxShadow:
     "0 11px 15px -7px rgba(0, 0, 0, 0.2), 0 9px 15px 8px rgba(0, 0, 0, 0.12), 0 12px 15px 3px rgba(0, 0, 0, 0.14)",
-  backgroundColor: "white"
+  backgroundColor: "white",
 });
 
 export const Container = styled.div({
@@ -26,7 +25,7 @@ export const Container = styled.div({
   borderWidth: "2px",
   borderColor: "#a8a8a866",
   margin: "30px",
-  boxShadow: "10px 10px 5px -4px rgba(0, 0, 0, 0.12)"
+  boxShadow: "10px 10px 5px -4px rgba(0, 0, 0, 0.12)",
 });
 
 export const Title = styled.h3({
@@ -34,19 +33,19 @@ export const Title = styled.h3({
   marginLeft: "10px",
   color: "black",
   fontStyle: "black",
-  letterSpacing: "0.25px"
+  letterSpacing: "0.25px",
 });
 
 export const Image = styled.img(
   {
     margin: "auto",
     width: "360px",
-    height: "266px"
+    height: "266px",
   },
-  props => ({
+  (props) => ({
     width: props.width,
     height: props.height,
-    marginTop: props.marginTop
+    marginTop: props.marginTop,
   })
 );
 
@@ -55,10 +54,10 @@ export const ColumnContainer = styled.div(
     flex: "50%",
     padding: "20px",
     display: "flex",
-    flexDirection: "column"
+    flexDirection: "column",
   },
-  props => ({
-    marginTop: props.marginTop
+  (props) => ({
+    marginTop: props.marginTop,
   })
 );
 
@@ -67,12 +66,12 @@ export const DescriptionContainer = styled.div(
     height: "30px",
     display: "flex",
     alignItems: "baseline",
-    flexDirection: "row"
+    flexDirection: "row",
   },
-  props => ({
+  (props) => ({
     marginTop: props.marginTop,
     // flexDirection: props.flexDirection
-    justifyContent: props.justifyContent
+    justifyContent: props.justifyContent,
   })
 );
 
@@ -82,10 +81,10 @@ export const Text = styled.p(
     marginLeft: "4px",
     fontSize: "18px",
     color: "#757272",
-    letterSpacing: "0.25px"
+    letterSpacing: "0.25px",
   },
-  props => ({
-    color: props.color
+  (props) => ({
+    color: props.color,
   })
 );
 
@@ -95,12 +94,12 @@ export const Input = styled.input(
     marginLeft: "4px",
     fontSize: "18px",
     color: "#757272",
-    letterSpacing: "0.25px"
+    letterSpacing: "0.25px",
   },
-  props => ({
+  (props) => ({
     marginLeft: props.marginLeft,
     marginTop: props.marginTop,
-    width: props.width
+    width: props.width,
   })
 );
 
@@ -111,7 +110,7 @@ export const CloseModal = styled.button({
   fontSize: "20px",
   alignSelf: "right",
   backgroundColor: "#f8f4f400",
-  border: "none"
+  border: "none",
 });
 
 export const Button = styled.button({
@@ -123,14 +122,14 @@ export const Button = styled.button({
   color: "#757272c2",
   borderRadius: "0.5em",
   borderWidth: "3px",
-  margin: "5px"
+  margin: "5px",
 });
 
 export const Label = styled.label(
   {
-    margin: "auto"
+    margin: "auto",
   },
-  props => ({
-    marginTop: props.marginTop
+  (props) => ({
+    marginTop: props.marginTop,
   })
 );

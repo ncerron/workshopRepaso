@@ -45940,7 +45940,6 @@ var Background = _emotion_styled__WEBPACK_IMPORTED_MODULE_0__["default"].div({
   display: "flex"
 });
 var ModalContainer = _emotion_styled__WEBPACK_IMPORTED_MODULE_0__["default"].div({
-  position: "fixed",
   zIndex: "10",
   height: "400px",
   width: "700px",
