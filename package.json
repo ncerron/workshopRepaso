@@ -8,8 +8,8 @@
     "webpack": "webpack -w --mode development",
     "start": "node index.js",
     "startDev": "nodemon server.js",
-    "seed": "node seed.js",
-    "heroku-postbuild":  "npm run seed"
+    "seed": "node seed.js"
+    
 
   },
   "keywords": [],
