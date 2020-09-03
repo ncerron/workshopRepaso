@@ -7,8 +7,9 @@
     "build": "webpack -w",
     "start": "node index.js",
     "startDev": "nodemon server.js",
+    "seed": "node seed.js",
     "heroku-prebuild": "npm install",
-    "heroku-postbuild":  "npm install && npm run build"
+    "heroku-postbuild":  "npm install && npm run build && npm run seed"
 
   },
   "keywords": [],
