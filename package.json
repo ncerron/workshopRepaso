@@ -9,8 +9,6 @@
     "start": "node index.js",
     "startDev": "nodemon server.js",
     "seed": "node seed.js"
-    
-
   },
   "keywords": [],
   "author": "",
@@ -40,10 +38,5 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
-  },
-  "performance": {
-    "maxAssetSize": 100000,
-    "maxEntrypointSize": 100000,
-    "hints": "warning"
   }
 }

@@ -4,10 +4,10 @@ module.exports = {
   entry: "./src/index.js",
   output: {
     filename: "bundle.js",
-    path: path.resolve(__dirname, "./public")
+    path: path.resolve(__dirname, "./public"),
   },
   resolve: {
-    extensions: [".js", ".jsx"]
+    extensions: [".js", ".jsx"],
   },
   context: __dirname,
   module: {
@@ -17,14 +17,17 @@ module.exports = {
         exclude: /(node_modules|bower_components)/,
         loader: "babel-loader",
         query: {
-          presets: ["@babel/preset-react", "@babel/env"]
-        }
+          presets: ["@babel/preset-react", "@babel/env"],
+        },
       },
       {
         test: /\.css$/,
-        loader: "style-loader!css-loader"
-      }
-    ]
+        loader: "style-loader!css-loader",
+      },
+    ],
   },
-  devtool: "source-map"
+  devtool: "source-map",
+  performance: {
+    hints: false,
+  },
 };
