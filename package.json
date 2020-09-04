@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack -w --mode production",
     "webpack": "webpack -w --mode development",
-    "start": "node index.js",
+    "start": "node server.js",
     "startDev": "nodemon server.js",
     "seed": "node seed.js"
   },
