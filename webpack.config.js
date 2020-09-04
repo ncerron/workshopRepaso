@@ -28,7 +28,11 @@ module.exports = {
       },
     ],
   },
-  plugins: [new Dotenv()],
+  plugins: [
+    new Dotenv({
+      path: "../.env",
+    }),
+  ],
   devtool: "source-map",
   performance: {
     hints: false,
