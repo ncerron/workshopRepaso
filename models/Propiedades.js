@@ -1,21 +1,23 @@
 const Sequelize = require("sequelize");
-const db = new Sequelize("postgres://localhost:5432/propiedades");
+const db = new Sequelize(
+  (url = process.env.DATABASE_URL || "postgres://localhost:5432/propiedades")
+);
 class Propiedad extends Sequelize.Model {}
 
 Propiedad.init(
   {
     name: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
     price: {
-      type: Sequelize.INTEGER
+      type: Sequelize.INTEGER,
     },
     location: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
     img: {
-      type: Sequelize.STRING
-    }
+      type: Sequelize.STRING,
+    },
   },
   { sequelize: db, modelName: "propiedad" }
 );
