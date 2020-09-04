@@ -30,7 +30,7 @@ module.exports = {
   },
   plugins: [
     new Dotenv({
-      path: "../.env",
+      path: "/.env",
     }),
   ],
   devtool: "source-map",
