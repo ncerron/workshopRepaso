@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
-const db = new Sequelize(
-  (url = process.env.DATABASE_URL || "postgres://localhost:5432/propiedades")
-);
+const url = (url =
+  process.env.DATABASE_URL || "postgres://localhost:5432/propiedades");
+const db = new Sequelize(url, { logging: false });
 class Propiedad extends Sequelize.Model {}
 
 Propiedad.init(
