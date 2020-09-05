@@ -4,7 +4,9 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const router = require("./routes");
 const { db } = require("./models/Propiedades");
+const cors = require("cors");
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true })); //
 
