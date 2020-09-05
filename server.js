@@ -24,6 +24,8 @@ app.get("/*", (req, res) => {
 
 db.sync({ force: false })
   .then(() => {
-    app.listen(port, () => console.log("Server running on port 3000"));
+    app.listen(port, () =>
+      console.log("Server running on por", port, process.env.API_URL)
+    );
   })
   .catch(console.log);
