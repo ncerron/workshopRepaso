@@ -93,7 +93,7 @@ class Sidebar extends Component {
         </Link>
       <div>
       <Select value={this.state.value} onChange={this.handleChange} selected>
-          {this.state.barrio.map(item => (
+          {this.state.barrio.sort().map(item => (
             <option key={item} value={item}>
               {item}
             </option>

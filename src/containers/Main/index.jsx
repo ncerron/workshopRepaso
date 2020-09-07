@@ -7,14 +7,13 @@ import Sidebar from "../Sidebar/Sidebar"
 import CardAddContainer from "../Card/CardAddContainer"
 import CardEditContainer from "../Card/CardEditContainer"
 import Search from "../../components/Search"
-
 export default class index extends Component {
   
   render() {
     return (
       <Container>
-        <Side>
-          <Sidebar></Sidebar>
+        <Side >
+          <Sidebar ></Sidebar>
         </Side>
         <Section> 
             <Switch>

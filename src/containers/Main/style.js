@@ -2,22 +2,20 @@ import styled from "@emotion/styled";
 
 export const Container = styled.div({
   display: "flex",
-  minHeight: "820px",
-  height: "100%",
-  width: "100%",
+  backgroundColor: "#7827b029",
+  height: "900px",
 });
 
 export const Side = styled.div({
-  display: "flex",
-  width: "20%",
-  minWidth: "220px",
-  backgroundColor: "#573694",
-  boxShadow: "2px 2px 2px 2px rgba(207,207,207,1)",
+  position: "fixed",
+  height: "100%",
+  minWidth: "250px",
+  backgroundColor: "white",
 });
 
 export const Section = styled.div({
-  margin: "auto",
-  width: "800px",
+  marginLeft: "30%",
+  height: "100%",
 });
 
 export const AddButton = styled.button({

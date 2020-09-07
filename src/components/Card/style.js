@@ -11,10 +11,9 @@ export const ModalContainer = styled.div({
   borderStyle: "solid",
   borderWidth: "2px",
   borderColor: "#a8a8a866",
-  margin: "30px",
-  boxShadow:
-    "0 11px 15px -7px rgba(0, 0, 0, 0.2), 0 9px 15px 8px rgba(0, 0, 0, 0.12), 0 12px 15px 3px rgba(0, 0, 0, 0.14)",
+  marginTop: "100px",
   backgroundColor: "white",
+  boxShadow: "10px 10px 5px -4px rgba(0, 0, 0, 0.12)",
 });
 
 export const Container = styled.div({
@@ -24,8 +23,11 @@ export const Container = styled.div({
   borderStyle: "solid",
   borderWidth: "2px",
   borderColor: "#a8a8a866",
+  backgroundColor: "white",
   margin: "30px",
-  boxShadow: "10px 10px 5px -4px rgba(0, 0, 0, 0.12)",
+  ":hover": {
+    boxShadow: "10px 10px 5px -4px rgba(0, 0, 0, 0.12)",
+  },
 });
 
 export const Title = styled.h3({

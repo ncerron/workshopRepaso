@@ -3,16 +3,22 @@ const { Propiedad } = require("./models/Propiedades");
 
 const propiedades = [
   {
-    name: "departamento a estrenar",
+    name: "Departamento a estrenar",
     price: 150,
-    location: "retiro",
-    img: "dto4.png",
+    location: "Retiro",
+    img: "dto4.jpg",
   },
   {
-    name: "departamento a estrenar",
+    name: "Nuevo departamento",
     price: 120,
     location: "recoleta",
     img: "dto2.png",
+  },
+  {
+    name: "Moderno proyecto",
+    price: 120,
+    location: "almagro",
+    img: "dto5.png",
   },
 ];
 

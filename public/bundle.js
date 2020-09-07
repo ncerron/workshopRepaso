@@ -42734,9 +42734,9 @@ var ModalContainer = _emotion_styled__WEBPACK_IMPORTED_MODULE_0__["default"].div
   borderStyle: "solid",
   borderWidth: "2px",
   borderColor: "#a8a8a866",
-  margin: "30px",
-  boxShadow: "0 11px 15px -7px rgba(0, 0, 0, 0.2), 0 9px 15px 8px rgba(0, 0, 0, 0.12), 0 12px 15px 3px rgba(0, 0, 0, 0.14)",
-  backgroundColor: "white"
+  marginTop: "100px",
+  backgroundColor: "white",
+  boxShadow: "10px 10px 5px -4px rgba(0, 0, 0, 0.12)"
 });
 var Container = _emotion_styled__WEBPACK_IMPORTED_MODULE_0__["default"].div({
   display: "flex",
@@ -42745,8 +42745,11 @@ var Container = _emotion_styled__WEBPACK_IMPORTED_MODULE_0__["default"].div({
   borderStyle: "solid",
   borderWidth: "2px",
   borderColor: "#a8a8a866",
+  backgroundColor: "white",
   margin: "30px",
-  boxShadow: "10px 10px 5px -4px rgba(0, 0, 0, 0.12)"
+  ":hover": {
+    boxShadow: "10px 10px 5px -4px rgba(0, 0, 0, 0.12)"
+  }
 });
 var Title = _emotion_styled__WEBPACK_IMPORTED_MODULE_0__["default"].h3({
   fontSize: "20px",
@@ -43576,20 +43579,18 @@ __webpack_require__.r(__webpack_exports__);
 
 var Container = _emotion_styled__WEBPACK_IMPORTED_MODULE_0__["default"].div({
   display: "flex",
-  minHeight: "820px",
-  height: "100%",
-  width: "100%"
+  backgroundColor: "#7827b029",
+  height: "900px"
 });
 var Side = _emotion_styled__WEBPACK_IMPORTED_MODULE_0__["default"].div({
-  display: "flex",
-  width: "20%",
-  minWidth: "220px",
-  backgroundColor: "#573694",
-  boxShadow: "2px 2px 2px 2px rgba(207,207,207,1)"
+  position: "fixed",
+  height: "100%",
+  minWidth: "250px",
+  backgroundColor: "white"
 });
 var Section = _emotion_styled__WEBPACK_IMPORTED_MODULE_0__["default"].div({
-  margin: "auto",
-  width: "800px"
+  marginLeft: "30%",
+  height: "100%"
 });
 var AddButton = _emotion_styled__WEBPACK_IMPORTED_MODULE_0__["default"].button({
   width: "180px",
@@ -43744,7 +43745,7 @@ var Sidebar = /*#__PURE__*/function (_Component) {
         value: this.state.value,
         onChange: this.handleChange,
         selected: true
-      }, this.state.barrio.map(function (item) {
+      }, this.state.barrio.sort().map(function (item) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
           key: item,
           value: item
@@ -43815,13 +43816,12 @@ __webpack_require__.r(__webpack_exports__);
 var Container = _emotion_styled__WEBPACK_IMPORTED_MODULE_0__["default"].div({
   display: "flex",
   flexDirection: "column",
-  alignItems: "center",
-  width: "100%"
+  alignItems: "center"
 });
 var Header = _emotion_styled__WEBPACK_IMPORTED_MODULE_0__["default"].h3({
-  height: "30px",
-  color: "white",
-  fontSize: "25px",
+  height: "35px",
+  color: "#7827b0ad",
+  fontSize: "30px",
   marginBottom: "100px"
 });
 var Search = _emotion_styled__WEBPACK_IMPORTED_MODULE_0__["default"].div({
@@ -43836,14 +43836,14 @@ var Image = _emotion_styled__WEBPACK_IMPORTED_MODULE_0__["default"].img({
 var Text = _emotion_styled__WEBPACK_IMPORTED_MODULE_0__["default"].h3({
   height: "20px",
   fontSize: "18px",
-  color: "White",
+  color: "#7827b0ad",
   margin: "6px 6px 6px 0px"
 });
 var Select = _emotion_styled__WEBPACK_IMPORTED_MODULE_0__["default"].select({
   marginTop: "30px",
   height: "40px",
   fontSize: "18px",
-  color: "#f5f5f5",
+  color: "#7827b0ad",
   width: "130px",
   backgroundColor: "#eae9e93b"
 });
@@ -43852,9 +43852,9 @@ var SearchBtn = _emotion_styled__WEBPACK_IMPORTED_MODULE_0__["default"].button({
   height: "40px",
   fontSize: "18px",
   width: "80px",
-  color: "#f5f5f5",
-  backgroundColor: "#eae9e93b",
-  borderColor: "#eae9e93b"
+  color: "#7827b0ad",
+  backgroundColor: "#7827b029",
+  borderColor: "#7827b029"
 });
 
 /***/ }),
