@@ -2,8 +2,6 @@ import styled from "@emotion/styled";
 
 export const Container = styled.div({
   display: "flex",
-  backgroundColor: "#7827b029",
-  height: "900px",
 });
 
 export const Side = styled.div({
@@ -15,7 +13,6 @@ export const Side = styled.div({
 
 export const Section = styled.div({
   marginLeft: "30%",
-  height: "100%",
 });
 
 export const AddButton = styled.button({

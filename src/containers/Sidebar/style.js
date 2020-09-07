@@ -4,7 +4,6 @@ export const Container = styled.div({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
- 
 });
 
 export const Header = styled.h3({

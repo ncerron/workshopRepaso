@@ -43578,9 +43578,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @emotion/styled */ "./node_modules/@emotion/styled/dist/styled.browser.esm.js");
 
 var Container = _emotion_styled__WEBPACK_IMPORTED_MODULE_0__["default"].div({
-  display: "flex",
-  backgroundColor: "#7827b029",
-  height: "900px"
+  display: "flex"
 });
 var Side = _emotion_styled__WEBPACK_IMPORTED_MODULE_0__["default"].div({
   position: "fixed",
@@ -43589,8 +43587,7 @@ var Side = _emotion_styled__WEBPACK_IMPORTED_MODULE_0__["default"].div({
   backgroundColor: "white"
 });
 var Section = _emotion_styled__WEBPACK_IMPORTED_MODULE_0__["default"].div({
-  marginLeft: "30%",
-  height: "100%"
+  marginLeft: "30%"
 });
 var AddButton = _emotion_styled__WEBPACK_IMPORTED_MODULE_0__["default"].button({
   width: "180px",
